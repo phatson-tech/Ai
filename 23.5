@@ -1,0 +1,15 @@
+import folium
+
+toa_do_kho = [10.775, 106.690]
+m5 = folium.Map(location=toa_do_kho, zoom_start=13)
+
+# Đánh dấu cái kho
+folium.Marker(toa_do_kho, popup="Kho Hàng", icon=folium.Icon(color="black")).add_to(m5)
+
+# Vẽ 3 vòng tròn (bán kính tính bằng mét).
+folium.Circle(toa_do_kho, radius=5000, color="red", fill=True, popup="Vùng 5km").add_to(m5)
+folium.Circle(toa_do_kho, radius=3000, color="blue", fill=True, popup="Vùng 3km").add_to(m5)
+folium.Circle(toa_do_kho, radius=1000, color="green", fill=True, popup="Vùng 1km").add_to(m5)
+
+# Gọi tên biến
+m5
