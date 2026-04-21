@@ -1,0 +1,28 @@
+import folium
+
+m13 = folium.Map(location=[10.78, 106.69], zoom_start=13)
+
+# Tạo 3 nhóm dữ liệu (Layers)
+lop_diem = folium.FeatureGroup(name="Các điểm cửa hàng")
+lop_vung = folium.FeatureGroup(name="Vùng phục vụ 2km")
+lop_tuyen = folium.FeatureGroup(name="Tuyến đường vận chuyển")
+
+# Thêm dữ liệu vào lớp Điểm
+folium.Marker([10.78, 106.69], popup="CH 1", icon=folium.Icon(color='red')).add_to(lop_diem)
+folium.Marker([10.77, 106.70], popup="CH 2", icon=folium.Icon(color='red')).add_to(lop_diem)
+
+# Thêm dữ liệu vào lớp Vùng
+folium.Circle([10.78, 106.69], radius=2000, color="blue", fill=True, fill_opacity=0.2).add_to(lop_vung)
+
+# Thêm dữ liệu vào lớp Tuyến
+folium.PolyLine([[10.78, 106.69], [10.77, 106.70]], color="purple", weight=5).add_to(lop_tuyen)
+
+# Đưa 3 lớp này lên bản đồ
+lop_vung.add_to(m13)
+lop_tuyen.add_to(m13)
+lop_diem.add_to(m13)
+
+# Thêm nút điều khiển góc phải trên cùng
+folium.LayerControl().add_to(m13)
+
+m13
