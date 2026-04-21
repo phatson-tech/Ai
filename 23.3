@@ -1,0 +1,17 @@
+import folium
+from folium.plugins import HeatMap
+
+m3 = folium.Map(location=[10.78, 106.69], zoom_start=14)
+
+# Tự tạo một danh sách vài tọa độ khách hàng
+# Chỗ nào tọa độ sát nhau thì tụ lại thành màu đỏ (nóng)
+danh_sach_khach_hang = [
+    [10.781, 106.692], [10.782, 106.691], [10.781, 106.693], # Cụm này đông
+    [10.775, 106.700], [10.776, 106.701]                     # Cụm này vắng
+]
+
+# Thêm lớp bản đồ nhiệt
+HeatMap(danh_sach_khach_hang).add_to(m3)
+
+# Gọi tên biến
+m3
