@@ -1,0 +1,22 @@
+import folium
+from geopy.distance import geodesic
+
+# Tọa độ 3 điểm
+trung_tam = (10.7814, 106.6920) # UEH
+diem_A = (10.7724, 106.6981)
+diem_B = (10.7931, 106.6892)
+
+# GeoPy tính khoảng cách (ra số km)
+khoang_cach_A = geodesic(trung_tam, diem_A).km
+khoang_cach_B = geodesic(trung_tam, diem_B).km
+
+# Tạo bản đồ
+m2 = folium.Map(location=trung_tam, zoom_start=14)
+
+# Gắn điểm lên bản đồ
+folium.Marker(trung_tam, popup="Trung tâm", icon=folium.Icon(color="red")).add_to(m2)
+folium.Marker(diem_A, popup=f"Điểm A cách {khoang_cach_A:.2f} km").add_to(m2)
+folium.Marker(diem_B, popup=f"Điểm B cách {khoang_cach_B:.2f} km").add_to(m2)
+
+# Gọi tên biến để Colab vẽ bản đồ ra màn hình
+m2
