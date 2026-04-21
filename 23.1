@@ -1,0 +1,16 @@
+import folium
+
+# 1. Tạo bản đồ ngay tại UEH (tọa độ cơ sở A)
+m = folium.Map(location=[10.7814, 106.6920], zoom_start=15)
+
+# 2. Đánh dấu UEH (màu đỏ)
+folium.Marker([10.7814, 106.6920], popup="Trường UEH", icon=folium.Icon(color="red")).add_to(m)
+
+# 3. Đánh dấu 5 điểm công cộng xung quanh (viết từng dòng cho dễ hiểu)
+folium.Marker([10.7828, 106.6958], popup="Hồ Con Rùa").add_to(m)
+folium.Marker([10.7798, 106.6999], popup="Bưu điện Trung tâm").add_to(m)
+folium.Marker([10.7815, 106.6985], popup="Diamond Plaza").add_to(m)
+folium.Marker([10.7813, 106.7022], popup="Bệnh viện Nhi Đồng 2").add_to(m)
+folium.Marker([10.7770, 106.6953], popup="Dinh Độc Lập").add_to(m)
+
+m
