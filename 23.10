@@ -1,0 +1,19 @@
+import folium
+
+m10 = folium.Map(location=[10.78, 106.685], zoom_start=14)
+
+# Giả lập 3 đoạn đường (Vẽ bằng PolyLine)
+duong_thoang = [(10.77, 106.68), (10.78, 106.68)]
+duong_ung_u = [(10.78, 106.68), (10.79, 106.69)]
+duong_ket_cung = [(10.78, 106.69), (10.78, 106.70)]
+
+# Phân tích nguy cơ bằng màu sắc
+folium.PolyLine(duong_thoang, color="green", weight=6, popup="Nguy cơ kẹt: Thấp").add_to(m10)
+folium.PolyLine(duong_ung_u, color="orange", weight=6, popup="Nguy cơ kẹt: Trung bình").add_to(m10)
+folium.PolyLine(duong_ket_cung, color="red", weight=6, popup="Nguy cơ kẹt: CAO! Tắc nghẽn").add_to(m10)
+
+# Đề xuất tuyến đường thay thế (đường vòng né đoạn màu đỏ)
+tuyen_thay_the = [(10.78, 106.69), (10.775, 106.695), (10.78, 106.70)]
+folium.PolyLine(tuyen_thay_the, color="blue", weight=4, dash_array="10", popup="Tuyến thay thế").add_to(m10)
+
+m10
